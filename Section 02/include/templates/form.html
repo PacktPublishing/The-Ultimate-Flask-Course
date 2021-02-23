@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}The Form{% endblock %}
+
+{% block content %}
+{{ super() }}
+<h1>Please fill out the form</h1>
+<form method="POST" action="/theform">
+                          <input type="text" name="name">
+                          <input type="text" name="location">
+                          <input type="submit" value="Submit">
+</form>
+{% endblock %}
