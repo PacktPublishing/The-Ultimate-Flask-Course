@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Fill Out This Form!
+        </h1>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <form method="POST" action="{{ url_for('main.index') }}">
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input" type="email" name="email" placeholder="Email">
+          </div>
+          <p class="help is-danger"></p>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" name="password" placeholder="Password">
+          </div>
+          <p class="help is-danger"></p>
+        </div>
+
+        <div class="field">
+          <label class="label">Location</label>
+          <div class="control">
+            <input class="input" type="text" name="location" placeholder="Location">
+          </div>
+          <p class="help is-danger"></p>
+        </div>
+
+        <div class="field">
+          <label class="label">When Did You First Learn to Code?</label>
+          <div class="control">
+            <input class="input" type="date" name="first_learn_date">
+          </div>
+          <p class="help is-danger"></p>
+        </div>
+
+        <div class="field">
+          <label class="label">Your Favorite Programming Language</label>
+          <div class="control">
+            <div class="select">
+              <select name="fav_language">       
+                {% for language in languages %}
+                <option value="{{ language.id }}">{{ language.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Tell Me About Yourself</label>
+          <div class="control">
+            <textarea class="textarea" name="about" placeholder="I am..."></textarea>
+          </div>
+          <p class="help is-danger"></p>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              What do you want to learn?
+            </label>
+            {% for topic in topics %}
+            <label class="checkbox">
+              <input type="checkbox" value="{{ topic.id }}" name="interest_in_topics">
+              {{ topic.name }}
+            </label>
+            {% endfor %}
+          </div>
+          <p class="help is-danger"></p>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="radio">
+              Are you interested in learning a new language?
+            </label>
+            <label class="radio">
+              <input type="radio" name="learn_new_interest">
+              Yes
+            </label>
+            <label class="radio">
+              <input type="radio" name="learn_new_interest">
+              No
+            </label>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button type="submit" class="button is-link">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+
+</html>

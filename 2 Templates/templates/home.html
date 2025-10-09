@@ -1,0 +1,13 @@
+{% include "nav.html" %}
+
+{% if number > 20 %}
+<h1>{{ number }} is greater than 20.</h1>
+{% elif number > 10 %}
+<h1>{{ number }} is greater than 10 but less than 20.</h1>
+{% else %}
+<h1>{{ number }} is less than or equal to 10.</h1>
+{% endif %}
+
+{% for item in data %}
+    <h2>{{ item.key }}</h2>
+{% endfor %}
